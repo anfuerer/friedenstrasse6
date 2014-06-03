@@ -25,6 +25,27 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- Google Maps -->
+    <style>
+      #map_canvas {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+      function initialize() {
+        var map_canvas = document.getElementById('map_canvas');
+        var map_options = {
+          center: new google.maps.LatLng(47.4625107,8.3130622),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(map_canvas, map_options)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -192,6 +213,10 @@
           <p class="lead">
           Die Wohnung befindet sich an ruhiger, zentraler und gut erschlossener Lage. Der Bahnhof ist in 2min zu Fuss erreichbar, eine Bushaltestelle ist 50m entfernt. Einkaufsm&ouml;glichkeiten befineden sich in unmittelbarer Umgebung.
           </p>
+          <address>
+            <strong>Adresse</strong><br>
+            Friedenstrasse 6, 5430 Wettingen
+          </address>
           <div class="table-responsive">
             <table class="table table-condensed">
          	  <tr>
@@ -226,7 +251,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <div id="map_canvas"></div>
         </div>
       </div>
 
